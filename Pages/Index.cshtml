@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+@section Style{
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true"/>
+}
+<div class="container-fluid fade-in-hidden">
+    <div class="row my-5">
+        <div class="col-lg-5 col-12 fade-in-hidden">
+            <div class="d-flex justify-content-lg-end justify-content-center">
+                <div class="profile-picture-container rounded-3 overflow-hidden pt-5 mb-lg-0 default-picture-background-color mb-5">
+                    <img src="~/ProfilePictures/@Model.UserData.ProfilePictureFileName" style="width: 340px; height: 350px" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-12 fade-in-hidden">
+            <div class="d-flex flex-column justify-content-center text-lg-start text-center h-100">
+                <h6 class=" text-secondary-emphasis fw-bolder">Hello I'm</h6>
+                <h1 class="mb-2 text-primary-emphasis fw-bold">@($"{Model.UserData.FirstName} {Model.UserData.MiddleName} {Model.UserData.LastName}")</h1>
+                <h5 class="mb-4 text-dark">I'm <span id="typewriter"></span></h5>
+                <p class="mb-5 text-light-emphasis">"Write once, reuse forever"</p>
+                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center justify-content-lg-start gap-4">
+                    <a asp-page-handler="DownloadFile" asp-route-fileName="@Model.UserData.ResumeFileName" class="btn-color-theme">Download Resume <i class="fa fa-download"></i></a>
+                    <a asp-page="/AboutPage/Index" class="clickable fw-bold color-theme">Know me <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="~/js/Index.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,20 @@
+﻿.circle-effect {
+    width: 195px;
+    height: 195px;
+    background-color: #211C84;
+    border-radius: 50%;
+    left: -15px;
+    top: -5px;
+}
+    .circle-effect ~ img {
+        border: solid;
+        border-color: #f6f8fa;
+        border-width: 4px;
+    }
+.my-skills .bg-white{
+    transition: .5s ease;
+}
+.my-skills .bg-white:hover {
+    background-color: #F1F0E9!important;
+    transition: .5s ease;
+}

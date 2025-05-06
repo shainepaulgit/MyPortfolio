@@ -1,0 +1,25 @@
+﻿body {
+    height: 100vh;
+    background: linear-gradient(to right, rgba(55, 59, 68, 0.7), rgba(66, 134, 244, 0.7)), url(../SystemImages/default_identity_background.png) no-repeat;
+    background-size: cover;
+}
+#identity-form{
+    width: 450px;
+}
+
+.identity-input input{
+    padding: 5px 0 5px 30px;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-width: 1.5px;
+}
+.identity-input input:focus {
+    border-bottom: 2px solid #500073;
+    outline: none;
+}
+.identity-input i {
+    font-size: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 7px
+}

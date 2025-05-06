@@ -1,0 +1,132 @@
+﻿@page
+@model MyPortfolio.Pages.AboutPage.IndexModel
+@{
+    ViewData["Title"] = "About";
+    var age = DateTime.Now.Year - Model.MyInformation.DateOfBirth.Year;
+}
+@section Style {
+	<link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+
+}
+<div class="container-fluid my-5">
+	<div class="row">
+		<div class="col-12">
+			<div class="title-underlined position-relative d-inline ms-3">
+				<h3 class="text-body font-monospace d-inline fw-bold">ABOUT</h3>
+				<div class="position-absolute bg-color-theme ms-3"></div>
+			</div>
+			<p class="mt-4 text-body-secondary ms-3">I am an ASP.NET developer with a passion for creating dynamic and responsive web applications. With extensive experience in Razor Pages, I strive to deliver high-quality and efficient solutions. My goal is to continuously improve my skills and contribute to innovative projects.</p>
+		</div>
+		<div class="col-lg-4 col-12 mb-2 fade-in-hidden">
+			<div class="d-flex align-items-center justify-content-center h-100">
+				<div class="position-relative" style="z-index: 1">
+					<div class="circle-effect position-absolute" style="z-index: -1">
+					</div>
+					<img src="~/ProfilePictures/@Model.MyInformation.ProfilePictureFileName" width="195" height="195" class="rounded-circle default-picture-background-color" />
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8 col-12 mb-2 fade-in-hidden">
+			<div class="bg-white shadow rounded-2 px-lg-4 px-md-4 px-3 py-4">
+				<h4 class="fw-bolder text-body mb-4 font-monospace fade-in-hidden">Personal Details</h4>
+				<div class="row">
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Birthday: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0">@Model.MyInformation.DateOfBirth.ToString("MMM dd, yyyy")</h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Age: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0">
+								@age
+							</h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Website: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0 text-break"><a href="@Model.MyInformation.Website">@Model.MyInformation.Website</a></h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Degree: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0">@Model.MyInformation.Degree</h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Phone: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0">@Model.MyInformation.PhoneNumber</h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Email: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0 text-break">@Model.MyInformation.Email</h6>
+						</div>
+					</div>
+					<div class="col-lg-6 col-12 mb-3 fade-in-hidden">
+						<div class="d-flex gap-2 align-items-start">
+							<div class="d-flex align-items-center gap-2">
+								<i class="fa fa-chevron-right color-theme-secondary"></i>
+								<h6 class="fw-bold text-dark-emphasis mb-0">Address: </h6>
+							</div>
+							<h6 class="text-body-secondary mb-0">@Model.MyInformation.Address</h6>
+						</div>
+					</div>
+				
+				</div>
+				
+			
+			</div>
+		</div>
+		
+	</div>
+	<div class="row bg-white py-5 mt-5 my-skills">
+		<div class="col-12">
+			<h4 class="fw-bolder text-center text-body mb-5 font-monospace fade-in-hidden">My Skills</h4>
+		</div>
+		<div class="col-12 mb-2 fade-in-hidden">
+			<h5 class="text-lg-start text-md-start text-center text-dark-emphasis font-monospace fw-bold ms-lg-3 ms-md-3">Native</h5>
+		</div>
+		<div class="col-12">
+			<div class="row row-native-skills px-lg-3 px-1">
+
+				<!--ajax-->
+			</div>
+		</div>
+		
+		<div class="col-12 mb-2 mt-3 fade-in-hidden">
+			<h5 class="text-lg-start text-md-start text-center text-body fw-bold font-monospace ms-lg-3 ms-md-3">Framework</h5>
+		</div>
+		<div class="col-12">
+			<div class="row row-framework-skills px-lg-3 px-1">
+				<!--ajax-->
+			</div>
+		</div>
+	</div>
+</div>	
+@section Scripts{
+	<script src="~/js/About.js" asp-append-version="true"></script>
+}

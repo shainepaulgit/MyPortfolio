@@ -1,0 +1,144 @@
+﻿@page
+@model MyPortfolio.Pages.ServicesPage.IndexModel
+@{
+}
+@section Style{
+    <link rel="stylesheet" href="~/css/service.css" asp-append-version="true"/>
+}
+<div class="container-fluid px-0">
+    <h3 class="text-center text-uppercase font-monospace text-body mt-5 fw-bolder fade-in-hidden">MY SERVICE</h3>
+    <p class="text-center text-body-secondary mb-4 fade-in-hidden">"This is the services i can offer as an IT"</p>
+    <div class="row mb-4 service-category">
+        @if(Model.ServiceCategories.Count() > 0)
+        {
+            @foreach(var sCategories in Model.ServiceCategories)
+            {
+                <div class="col-lg-4 col-12 fade-in-hidden">
+                    <div class="d-flex align-items-center flex-column justify-content-center text-center text-white gap-2 px-3 py-4">
+                        <i class="@sCategories.IconName fs-1 text-white"></i>
+                        <h5 class="font-monospace m-0 p-0 fw-bold">@sCategories.Title</h5>
+                        <p class="mb-0 p-0">@sCategories.Description</p>
+                    </div>
+                </div>
+            }
+
+        }
+        else
+        {
+            <div class="col-12">
+                <h5 class="text-center">No data to show</h5>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="px-lg-5 px-2">
+                <p class="text-center text-body-tertiary fade-in-hidden">
+                    The skills highlighted above represent my core expertise as an IT professional, with a strong focus on web development. I am committed to delivering high-quality solutions that ensure client satisfaction. Beyond my specialization, I am adaptable and open to exploring new technologies to expand my knowledge and enhance my capabilities. Below are some of the projects I have developed, showcasing my technical proficiency and problem-solving skills.
+                </p>
+            </div>
+        </div>
+        <div class="col-12">
+            @if(Model.Projects.Count() > 0)
+            {
+                <div class="d-flex flex-lg-row flex-column   align-items-center justify-content-center bg-white my-5 py-3 px-lg-3 px-1">
+                    <h5 class="font-monospace text-center fw-bolder text-dark-emphasis fade-in-hidden">Here's my previous works preview</h5>
+                    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade w-lg-75 w-100  rounded-3 fade-in-hidden" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            @{
+                                bool isFirstIndicator = true;
+                                int counter = 0;
+                            }
+                            @while(counter < (Model.Projects.Count()*2)){
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@counter" class="@(isFirstIndicator ? "active":"")"></button>
+                                isFirstIndicator = false;
+                                counter++;
+                            }
+                        </div>
+                        <div class="carousel-inner">
+                            @{
+                                bool isFirst = true;
+                            }
+                            @foreach (var project in Model.Projects)
+                            {
+                                <div class="carousel-item @(isFirst ? "active" : "")">
+                                    <div class="picture-container w-100 rounded-3 bg-danger" style="height: 350px; background: linear-gradient(to left, #2D336B80, #4B008280), url('/ProjectPictureFiles/@project.ProjectPictureFileName') no-repeat;background-size: cover;">
+                                    </div>
+                                    <div class="carousel-caption h-100 d-flex flex-column align-items-center justify-content-center">
+                                        <h6 class="text-white z-3 fw-bold">@project.ProjectTitle</h6>
+                                        <p>@project.ProjectDescription</p>
+                                        @if (project.IsGitHubRepository)
+                                        {
+                                            <button onclick="modalShow('@(project.RedirectUrl)')" class="btn btn-outline-secondary text-white border-white rounded-pill btn-sm">Repository GitHub Invitation <i class="fa-brands fa-github"></i></button>
+                                        }
+                                        else
+                                        {
+                                            <a href="@project.RedirectUrl" class="btn btn-outline-secondary text-white border-white rounded-pill btn-sm">
+                                                Redirect to project <i class="fa fa-diamond-turn-right"></i>
+                                            </a>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="picture-container w-100 rounded-3 bg-danger" style="height: 350px; background: linear-gradient(to left, rgba(45, 51, 107, 0.2), rgba(75, 0, 130, 0.2)), url('/ProjectPictureFiles/@project.ProjectPictureFileName') no-repeat;background-size: cover;">
+                                    </div>
+                                </div>
+
+                                isFirst = false;
+                            }
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h5 class="text-center text-body-tertiary">No project to show</h5>
+            }
+
+        </div>
+    </div>
+    <div class="row px-lg-5 px-md-4 px-1 recent-project">
+        <div class="col-12 mb-2">
+            <h5 class="text-center text-dark-emphasis font-monospace fw-bolder fade-in-hidden">My Recent Projects</h5>
+        </div>
+        @if(Model.ProjectCategories.Count() > 0)
+        {
+            @foreach(var projectCateg in Model.ProjectCategories)
+            {
+                <div class="col-lg-4 col-md-6 col-12 fade-in-hidden mb-3">
+                    <div class="bg-white shadow rounded-3 p-4 d-flex flex-column align-items-center justify-content-center">
+                        <i class=" @projectCateg.IconName color-theme fs-1 mb-3"></i>
+                        <h6 class="text-body-secondary fw-bold mb-2">@projectCateg.Title</h6>
+                        <p class="text-body-tertiary text-center">
+                            @projectCateg.Description
+                        </p>
+                    </div>
+                </div>
+            }
+           
+
+        }
+        else
+        {
+            <h5 class="text-center text-body-tertiary">No data to show now</h5>
+        }
+    </div>
+</div>
+<partial name="_GitHubRequestForm" model="new GitHubRequestInput()"/>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+    <script src="~/js/services.js" asp-append-version="true"></script>
+}
+

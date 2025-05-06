@@ -1,0 +1,136 @@
+﻿@page
+@model MyPortfolio.Pages.ProfilePage.IndexModel
+<div class="container px-lg-5  px-md-3 px-2 my-5">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <div class="title-underlined position-relative d-inline">
+                <h3 class="text-body font-monospace d-inline fw-bold ms-lg-0 ms-3">PROFILE</h3>
+                <div class="position-absolute bg-color-theme ms-lg-0 ms-3"></div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12 mb-lg-0 mb-4">
+            <div class="d-flex flex-column align-items-center">
+                <img src="~/ProfilePictures/@Model.PIInput.ProfilePictureFileName" width="200" height="200" class="default-picture-background-color rounded-circle mb-3 border border-opacity-50 border-2" />
+                <button data-bs-toggle="modal" data-bs-target="#update-password" class="btn-c-sm btn-color-theme mb-2">Update Password <i class="fa fa-key"></i></button>
+                <partial name="_UpdatePassword" model="new UpdatePasswordInput()"/>
+                <button data-bs-toggle="modal" data-bs-target="#update-username" class="btn-c-sm btn-color-theme mb-2">Update Username <i class="fa fa-user"></i></button>
+                <partial name="_UpdateUserName" model="new UpdateUserNameInput()" />
+                <button data-bs-toggle="modal" data-bs-target="#update-email" class="btn-c-sm btn-color-theme mb-2">Update Email <i class="fa fa-envelope"></i></button>
+                <partial name="_UpdateEmail" model="new UpdateEmailInput()" />
+                <button data-bs-toggle="modal" data-bs-target="#logout" class="btn-sm btn btn-danger mb-2 rounded-3">Logout <i class="fa fa-right-from-bracket"></i></button>
+                <partial name="_LogoutModal"/>
+            </div>
+        </div>
+        <div class="col-lg-8 col-12">
+            <form method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="PIInput.ResumeFileName"/>
+                <input type="hidden" asp-for="PIInput.ProfilePictureFileName" />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2 text-center d-block" asp-for="PIInput.UserName"></label>
+                            <input asp-for="PIInput.UserName" readonly class="bg-secondary-subtle form-control text-center" placeholder="e.g., john_doe123" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2 text-center d-block" asp-for="PIInput.Email"></label>
+                            <input asp-for="PIInput.Email" readonly class="bg-secondary-subtle form-control text-center" placeholder="e.g., user@example.com" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr />
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.FirstName"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.FirstName" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.MiddleName"></label>
+                            <input asp-for="PIInput.MiddleName" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.MiddleName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.LastName"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.LastName" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.DateOfBirth"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.DateOfBirth" type="date" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.PhoneNumber"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.PhoneNumber" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                 
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.Website"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.Website" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.Website" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.Degree"></label><span class="text-danger">*</span>
+                            <input asp-for="PIInput.Degree" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PIInput.Degree" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PIInput.Address">Permanent Address</label>
+                            <textarea asp-for="PIInput.Address" class="form-control" placeholder="Enter here..."></textarea>
+                            <span asp-validation-for="PIInput.Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="PFInput">Update Profile Picture</label>
+                            <input asp-for="PFInput" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="PFInput" class="text-danger"></span>
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-6 col-12">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2" asp-for="RFInput">Update Resume</label>
+                            <input asp-for="RFInput" class="form-control" placeholder="Enter here..." />
+                            <span asp-validation-for="RFInput" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <div class="d-flex justify-content-end gap-2 align-items-center">
+                            <button class="btn btn-light btn-sm">Cancel</button>
+                            <button type="submit" id="submit-button" class="btn-color-theme btn-c-sm">
+                                <span class="button-text">Update Profile</span>
+                                <span class="d-none spinner-grow spinner-grow-sm loading-spinner"></span>
+                                <span class="d-none loading-text">Loading...</span>
+                                <i class="fa fa-pen"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+    <script src="~/js/profile.js" asp-append-version="true"></script>
+}

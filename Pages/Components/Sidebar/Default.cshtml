@@ -1,0 +1,67 @@
+﻿@model List<SidebarViewModel>
+@inject UserManager<AppIdentityUser> _userManager
+@{
+	var users = _userManager.Users.ToList();
+	var user = users.FirstOrDefault();
+}
+<sidebar id="sidebar" class="position-fixed">
+	<div class="position-relative d-flex flex-column align-items-center justify-content-center gap-3 mt-3 mb-4" id="sidebar-head-container">
+		<button class="btn btn-primary rounded-circle position-absolute" id="menu-toggle">
+			<i class="fa fa-chevron-left text-white clickable"></i>
+		</button>
+		<div class=" flex-column align-items-center gap-3" id="profile-picture">
+			<div id="profile-picture-container" class="position-relative rounded-circle ">
+				<div class="h-100 w-100 position-absolute rounded-circle z-0"></div>
+				<img src="~/ProfilePictures/@user?.ProfilePictureFileName" class="w-100 h-100 rounded-circle z-1 position-absolute default-picture-background-color" />
+			</div>
+			<h5 class="text-white fw-bolder mb-0 p-o text-nowrap">@($"{user?.FirstName} {user?.MiddleName} {user?.LastName}")</h5>
+			<div class="d-flex align-items-center justify-content-center gap-1">
+				<a href="https://www.facebook.com/shaine.paul.moreno.calzo.2025/" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+				<a href="https://www.instagram.com/shaine_paul/" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/shainepaul-m-calzo-57b614280/" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-linkedin-in"></i>
+				</a>
+			</div>
+		</div>
+
+		<i class="fa fa-ellipsis text-white clickable" id="toggle-sidebar-header"></i>
+		<div id="sidebar-header-popover" class="d-flex flex-column align-items-center gap-3 rounded-3 shadow-lg position-absolute z-3 p-4 d-none">
+			<div id="profile-picture-container" class="position-relative rounded-circle">
+				<div class="h-100 w-100 position-absolute rounded-circle z-0"></div>
+				<img src="~/ProfilePictures/@user?.ProfilePictureFileName" class="w-100 h-100 rounded-circle z-1 position-absolute bg-white" />
+			</div>
+			<h5 class="text-white text-center fw-bolder mb-0 p-o text-nowrap">@($"{user?.FirstName} {user?.MiddleName} {user?.LastName}")</h5>
+			<div class="d-flex align-items-center justify-content-center gap-1">
+				<a href="https://www.facebook.com/profile.php?id=100072964275252" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+				<a href="https://www.instagram.com/shaine_paul/" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/shainepaul-m-calzo-57b614280/" class="text-white text-decoration-none rounded-circle d-flex align-items-center justify-content-center contact-icon-container">
+					<i class="fa-brands fa-linkedin-in"></i>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+	<ul class="list-unstyled w-100" id="menu">
+		@foreach(var menu in Model)
+		{
+			<li class="mb-2 rounded-3 text-nowrap">
+				<a asp-page="@menu.MenuUrl" class="d-flex gap-2 align-items-center text-decoration-none text-white py-1">
+					<div class="d-flex align-items-center justify-content-center rounded-circle menu-icon">
+						<i class="@menu.Icon"></i>
+					</div>
+					<span class="menu-text">@menu.MenuName</span>
+				</a>
+			</li>
+		}
+		
+	</ul>
+</sidebar>

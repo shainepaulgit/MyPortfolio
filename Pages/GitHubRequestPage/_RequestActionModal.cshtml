@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="request-action" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content py-4">
+            <div class="text-center">
+                <img src="~/SystemPictureFiles/gitHubRequestActionIllustration.svg" width="60" height="60" alt="Action Illustration" />
+                <h4 class="fw-bold mt-3">Review GitHub Request</h4>
+                <p class="text-secondary mt-3">
+                    Approve or decline this request. Click the <i class="fa fa-check text-success"></i> to approve, or
+                    <i class="fa fa-xmark text-danger"></i> to decline.
+                </p>
+            </div>
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <form method="post" asp-page-handler="RequestAction">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="requestId"  />
+                    <input type="hidden" name="status" value="@GitHubRequestStatus.Declined" />
+                    <button type="submit" class="btn btn-danger rounded-circle" title="Decline">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+                <form method="post" asp-page-handler="RequestAction">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="requestId" />
+                    <input type="hidden" name="status" value="@GitHubRequestStatus.Approved" />
+                    <button type="submit" class="btn btn-success rounded-circle" title="Approve">
+                        <i class="fa-solid fa-check-double"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

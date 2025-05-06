@@ -1,0 +1,25 @@
+﻿@model UpdateEmailInput
+<div class="modal fade" id="update-email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-white rounded-3 overflow-hidden shadow">
+            <form method="post" asp-page-handler="UpdateEmail">
+                @Html.AntiForgeryToken()
+                <div class="d-flex align-items-center justify-content-between px-3 py-2 bg-color-theme">
+                    <h5 class="fw-bold text-white mb-0 p-0">Update Email</h5>
+                    <i class="fa-solid fa-xmark text-white fs-5 clickable" data-bs-dismiss="modal"></i>
+                </div>
+                <div class="mb-3 p-3">
+                    <div class="mb-2">
+                        <label asp-for="Email" class="text-body-secondary mb-1 fw-semibold"></label><span class="text-danger">*</span>
+                        <input asp-for="Email" class="form-control" placeholder="Enter email..." />
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-end gap-2 me-3 mb-4">
+                    <button type="reset" class="btn btn-light color-theme">Cancel</button>
+                    <button type="submit" class="btn-color-theme btn-c-sm mb-1 btn-sm text-white">Update <i class="fa fa-pen"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

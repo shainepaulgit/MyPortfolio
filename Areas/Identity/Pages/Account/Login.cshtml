@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<div id="identity-form" class="shadow p-lg-5 p-md-5 p-3 rounded-2 bg-white">
+    <div class="d-flex justify-content-center mb-2">
+        <img src="https://static.vecteezy.com/system/resources/previews/024/306/176/original/initial-s-logo-design-gradient-colorful-vector.jpg" width="100" height="100" class="rounded-circle mb-2" />
+    </div>
+    <h4 class="text-center fw-bold mb-4 color-theme">Login</h4>
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+        @Html.AntiForgeryToken()
+        <div class="mb-4">
+            <label asp-for="Input.UserName" class="fw-semibold color-theme"></label><span class="text-danger fw-bold">*</span>
+            <div class="position-relative identity-input">
+                <i class="fa fa-user text-body-tertiary position-absolute"></i>
+                <input asp-for="Input.UserName" class="w-100" placeholder="Type your username..." />
+            </div>
+            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Input.Password" class="fw-semibold color-theme"></label><span class="text-danger fw-bold">*</span>
+            <div class="position-relative identity-input">
+                <i class="fa fa-key text-body-tertiary position-absolute"></i>
+                <input asp-for="Input.Password" class="w-100" placeholder="Type your password..." />
+            </div>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3 d-flex flex-column flex-lg-row flex-md-row align-item-lg-center align-item-md-center align-items-start justify-content-lg-between justify-content-md-between">
+            <div class="checkbox ">
+                <label asp-for="Input.RememberMe" class="form-label color-theme">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+            <a asp-page="./ForgotPassword" class="color-theme">Forgot password?</a>
+        </div>
+        <button type="submit" id="submit-button" class="btn-color-theme w-100 mb-2">
+            <span class="button-text">Sign in</span>
+            <span class="d-none spinner-grow spinner-grow-sm loading-spinner"></span>
+            <span class="d-none loading-text">Loading...</span>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </button>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

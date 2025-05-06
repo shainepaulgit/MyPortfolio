@@ -1,0 +1,351 @@
+/* ============================
+   Global Styles
+   ============================ */
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(165, 191, 204, 0.1);
+}
+
+/* ============================
+   Utility Classes
+   ============================ */
+.title-underlined > div {
+    height: 4px;
+    width: 50%;
+}
+.clickable {
+    cursor: pointer !important;
+}
+
+.color-theme {
+    color: #500073;
+}
+
+.color-theme-secondary {
+    color: #7A73D1;
+}
+
+.bg-color-theme {
+    background-color: #500073;
+}
+.btn-color-theme {
+    text-decoration: none;
+    background-color: #500073;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+.btn-c-sm {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+}
+.btn-color-theme:hover {
+    background-color: #161179;
+}
+
+.default-picture-background-color {
+    background-color: #B3C8CF;
+}
+.remove-scrollbar::-webkit-scrollbar {
+    width: 0; /* For Chrome, Safari, and Opera */
+}
+/* ============================
+   Sidebar Styles
+   ============================ */
+#sidebar {
+    background: #09122C;
+    width: 280px;
+    transition: .2s ease;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 50;
+}
+
+#sidebar.clicked {
+    width: 55px;
+    transition: .2s ease;
+}
+
+/* ============================
+   Sidebar Toggle Button
+   ============================ */
+#menu-toggle {
+    right: -15px;
+    top: 35px;
+}
+
+#sidebar.clicked #menu-toggle {
+    transform: rotate(180deg);
+}
+
+#toggle-sidebar-header:hover {
+    color: #4F75FF !important;
+}
+
+/* ============================
+   Sidebar Header Popover
+   ============================ */
+#sidebar-header-popover {
+    background-color: #09122C;
+    width: 240px;
+    right: -257.5px;
+    transition: .2s ease;
+}
+
+#sidebar-head-container {
+    height: 200px;
+}
+
+/* ============================
+   Profile Picture
+   ============================ */
+#profile-picture {
+    top: -15px !important;
+    display: flex;
+}
+
+#toggle-sidebar-header {
+    display: none;
+}
+
+#sidebar.clicked #toggle-sidebar-header {
+    display: inline;
+}
+
+#sidebar.clicked #profile-picture {
+    display: none;
+}
+
+#profile-picture-container {
+    width: 80px;
+    height: 80px;
+}
+
+    #profile-picture-container img {
+        border: solid;
+        border-color: #09122C;
+        border-width: 5px;
+    }
+
+    #profile-picture-container div {
+        left: -5px;
+        top: -5px;
+        background-color: #4F75FF;
+    }
+
+/* ============================
+   Menu Styles
+   ============================ */
+#menu {
+    transition: .2s ease;
+    padding: 0 1rem 0 1rem;
+}
+
+#sidebar.clicked #menu {
+    padding: 0 .25rem 0 .25rem;
+}
+
+#menu .menu-icon {
+    width: 40px;
+    height: 40px;
+    border: solid;
+    border-color: #143D60;
+}
+
+#menu li:hover {
+    background-color: rgba(64, 93, 114, 0.25);
+}
+
+#menu li.active i,
+#menu li.active span {
+    color: #4F75FF;
+}
+
+#menu li a {
+    padding: 0 .5rem 0 .5rem;
+}
+
+#sidebar.clicked #menu li a {
+    transition: 2s ease;
+    padding: 0 .25rem 0 .25rem;
+}
+
+#sidebar .menu-text {
+    transition: 2s ease;
+}
+
+#sidebar.clicked .menu-text {
+    display: none;  
+  
+}
+
+/* ============================
+   Contact Icons
+   ============================ */
+.contact-icon-container {
+    width: 40px;
+    height: 40px;
+    background-color: #4F75FF;
+    transition: all 0.3s ease-in-out;
+    animation: bounceAlternate .6s infinite alternate;
+}
+
+    .contact-icon-container:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .contact-icon-container:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    .contact-icon-container:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+
+@keyframes bounceAlternate {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.contact-icon-container:hover {
+    background-color: #00CCDD;
+}
+
+/* ============================
+   Fade-in Effects
+   ============================ */
+.fade-in-hidden {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ============================
+   Main Content Layout
+   ============================ */
+#main-content {
+    position: relative;
+    width: calc(100% - 280px);
+    left: 280px;
+    transition: .2s ease;
+}
+
+#sidebar.clicked ~ #main-content {
+    width: calc(100% - 55px);
+    left: 55px;
+    transition: .2s ease;
+}
+
+/* ============================
+   Responsive Styles
+   ============================ */
+@media screen and (max-width: 800px) {
+    #main-content {
+        width: calc(100% - 55px);
+        left: 55px;
+    }
+
+    #sidebar.clicked ~ #main-content {
+        width: calc(100% - 55px);
+        left: 55px;
+    }
+
+    #sidebar {
+        width: 55px;
+    }
+
+        #sidebar.clicked {
+            width: 280px;
+        }
+
+    #profile-picture {
+        display: none;
+    }
+
+    #sidebar.clicked #profile-picture {
+        display: flex;
+    }
+
+    #menu-toggle {
+        transform: rotate(180deg);
+    }
+
+    #sidebar.clicked #menu-toggle {
+        transform: rotate(360deg);
+    }
+
+    #toggle-sidebar-header {
+        display: inline;
+    }
+
+    #sidebar.clicked #toggle-sidebar-header {
+        display: none;
+    }
+
+    #menu {
+        transition: .2s ease;
+        padding: 0 .25rem 0 .25rem;
+    }
+
+    #sidebar.clicked #menu {
+        padding: 0 1rem 0 1rem;
+    }
+
+    #menu li a {
+        padding: 0 .25rem 0 .25rem;
+    }
+
+    #sidebar.clicked #menu li a {
+        padding: 0 .5rem 0 .5rem;
+    }
+
+    #menu li .menu-text {
+        transition: .2s ease;
+        display: none;
+    }
+
+    #sidebar.clicked .menu-text {
+        transition: .2s ease;
+        display: inline;
+    }
+}
+
+
+/*  ============================
+    alert
+    ============================*/
+/* Alert */
+#alert {
+    position: fixed;
+    top: 10px;
+    max-width: 40%;
+    width: auto;
+    right: 0;
+    transform: translateX(150%);
+    transition: transform 0.4s cubic-bezier(0.68,-0.55,0.265,1.35);
+    z-index: 100;
+}
+
+    #alert.active-alert {
+        transform: translateX(0%);
+    }
+

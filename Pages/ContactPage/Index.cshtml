@@ -1,0 +1,87 @@
+﻿@page
+@model MyPortfolio.Pages.ContactPage.IndexModel
+@{
+}
+@section Style {
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+}
+<div class="container-fluid px-0 pb-5">
+	<div class="row">
+		<div class="col-12 mb-5">
+			<div class="position-relative d-flex justify-content-lg-end justify-content-center w-100">
+				<div class="position-absolute w-100 top-0 d-flex flex-lg-row flex-column align-items-center">
+					<div class="w-50 d-flex justify-content-center">
+						<div class="my-5">
+							<h5 class="text-light text-lg-start text-center fade-in-hidden text-nowrap">Let’s Connect</h5>
+							<h1 class="text-white text-lg-start text-center fade-in-hidden text-nowrap">Got a project?</h1>
+							<h1 class="text-white text-lg-start text-center fade-in-hidden text-nowrap">I'm all ears.</h1>
+
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="form-container me-lg-5 bg-white p-lg-5 p-3 rounded-3 shadow  fade-in-hidden position-relative">
+					<h4 class="text-dark-emphasis mb-4 ">Let's Talk</h4>
+					<form method="post">
+						@Html.AntiForgeryToken()
+						<div class="mb-3">
+							<label asp-for="Input.Name" class="text-body-secondary mb-1">Your Name</label><span class="text-danger">*</span>
+							<input asp-for="Input.Name" class="form-control border-1 rounded-0 border-opacity-25" placeholder="Enter here..." />
+							<span asp-validation-for="Input.Name" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							<label asp-for="Input.Email" class="text-body-secondary mb-1">Your Email</label><span class="text-danger">*</span>
+							<input asp-for="Input.Email" class="form-control border-1 rounded-0 border-opacity-25" placeholder="Enter here..." />
+							<span asp-validation-for="Input.Email" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							<label asp-for="Input.Subject" class="text-body-secondary mb-1">Subject</label><span class="text-danger">*</span>
+							<input asp-for="Input.Subject" class="form-control border-1 rounded-0 border-opacity-25" placeholder="Enter here..." />
+							<span asp-validation-for="Input.Subject" class="text-danger"></span>
+						</div>
+						<div class="mb-4">
+							<label asp-for="Input.Message" class="text-body-secondary mb-1">Message</label><span class="text-danger">*</span>
+							<textarea asp-for="Input.Message" class="form-control border-1 rounded-0 border-opacity-25" placeholder="Enter here..."></textarea>
+							<span asp-validation-for="Input.Message" class="text-danger"></span>
+						</div>
+						<div class="d-flex align-items-center gap-2">
+							<button type="reset" class="btn btn-light btn-sm">Cancel</button>
+							<button type="submit" id="submit-button" class="btn-color-theme btn-c-sm btn-sm text-white">
+								<span class="button-text">Send</span>
+								<span class="d-none spinner-grow spinner-grow-sm loading-spinner"></span>
+								<span class="d-none loading-text">Loading...</span>
+								<i class="fa fa-paper-plane"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-12 mb-5">
+			<div class="d-flex flex-lg-row flex-md-row flex-column justify-content-center gap-3 align-items-center px-lg-5 px-md-4 px-2">
+				<div class="bg-white rounded-3 shadow-sm d-flex w-100 gap-2 justify-content-center align-items-center p-3 fade-in-hidden">
+					<i class="fa fa-phone text-body-tertiary fs-5"></i>
+					<h6 class="mb-0 p-0 text-dark text-break">09679362759</h6>
+				</div>
+				<div class="bg-white rounded-3 shadow-sm d-flex w-100 gap-2 justify-content-center align-items-center p-3 fade-in-hidden ">
+					<i class="fa-solid fa-envelope-open-text text-info fs-5"></i>
+					<h6 class="mb-0 p-0 text-dark text-break">shainepaulm@gmail.com</h6>
+				</div>
+				<div class="bg-white rounded-3 shadow-sm d-flex w-100 gap-2 justify-content-center align-items-center p-3 fade-in-hidden">
+					<i class="fa-solid fa-location-dot text-body-tertiary fs-5"></i>
+					<h6 class="mb-0 p-0 text-dark text-break">Zone 6. Bagong Silang</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<iframe class="shadow w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31079.860807962716!2d121.19574479461544!3d13.163496967242468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bc968a0f0374bf%3A0x45b1f234b1cc5698!2sBagong%20Silang%2C%20Victoria%2C%20Oriental%20Mindoro!5e0!3m2!1sen!2sph!4v1742000229197!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
+		</div>
+	</div>
+</div>
+@section Scripts{
+	<partial name="_ValidationScriptsPartial"/>
+	<script src="~/js/Contact.js" asp-append-version="true"></script>
+}

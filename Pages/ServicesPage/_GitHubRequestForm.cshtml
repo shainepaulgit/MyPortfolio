@@ -1,0 +1,23 @@
+﻿@model GitHubRequestInput
+<div class="modal fade" id="github-request" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="RepositoryName"/>
+            <input type="hidden" asp-for="Status" value="@GitHubRequestStatus.Pending">
+            <div class="modal-content bg-white rounded-3 shadow p-3">
+                <h5 class="text-center mb-3 fw-bold">Request GitHub Invitation</h5>
+                <p class="text-center text-body-secondary small">
+                    Enter your GitHub username below to request an invitation to our repository.
+                </p>
+                <div class="mb-3">
+                    <label asp-for="GitHubUserName" class="text-body-secondary mb-1 fw-semibold"></label><span class="text-danger">*</span>
+                    <input asp-for="GitHubUserName" class="form-control" placeholder="e.g., johndoe123"/>
+                    <span class="text-danger" asp-validation-for="GitHubUserName"></span>
+                </div>
+                <button type="submit" class="w-100 btn-color-theme btn-c-sm mb-1 btn-sm text-white">Request Invitation <i class="fa-solid fa-paper-plane"></i></button>
+                <a class="color-theme d-block text-center clickable" data-bs-dismiss="modal">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
